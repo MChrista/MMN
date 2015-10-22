@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <h1>Multimedia im Netz - Canvas</h1>
+    </head>
+    <body>
+        <div id="menue">
+            <table>
+                <tr>
+                    <td class="colorChooser" id="red" style="background: #ff0000; width: 50px; height: 50px; border: 3px solid #000000;"></td>
+                    <td class="colorChooser" id="green" style="background: #00ff00; width: 50px; height: 50px;"></td>
+                    <td class="colorChooser" id="blue" style="background: #0000ff; width: 50px; height: 50px;"></td>
+                    <td><button id="btn_clear_canvas">clear</button></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <canvas id="canvas" width="800" height="600" style="border: 1px solid #000000">Browser does not support this tag</canvas>
+        </div>
+    </body>
+    <script>
+        //Declaration of Variables
+        var canvas=document.getElementById("canvas");
+        var ctx=canvas.getContext("2d");
+        var counterMouseDown = 0;
+        var counterMouseUp = 0;
+        var rect = canvas.getBoundingClientRect();
+        var rectSize = 10;
+        var drawingColor="#ff0000";
+        var drawingColorId="red";
+        
+        var mouseMoveListener = function(e){
+            ctx.beginPath();
+            ctx.fillStyle=drawingColor;
+            ctx.fillRect(e.clientX-rect.left-(rectSize/2), e.clientY-rect.top-(rectSize/2),rectSize,rectSize);
+        }
+
+        function init(){
+            canvas.addEventListener("mousedown",doMouseDown,false);
+            canvas.addEventListener("mouseup",doMouseUp,false);
+        }
+        
+        function doMouseDown(event){
+            canvas.addEventListener("mousemove",mouseMoveListener, false);   
+        }
+        
+        function doMouseUp(event){
+            canvas.removeEventListener("mousemove",mouseMoveListener, false);
+        }
+        
+        document.getElementById("btn_clear_canvas").addEventListener("click",function(evt){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+        },false);
+        
+        document.getElementById("red").addEventListener("click",function(evt){
+            drawingColor="#ff0000";
+            document.getElementById(drawingColorId).style.border = "none";
+            drawingColorId = "red";
+            document.getElementById(drawingColorId).style.border = "3px solid #000000";
+        },false);
+        
+        document.getElementById("green").addEventListener("click",function(evt){
+            drawingColor="#00ff00";
+            document.getElementById(drawingColorId).style.border = "none";
+            drawingColorId = "green";
+            document.getElementById("green").style.border = "3px solid #000000";
+        },false);
+        
+        document.getElementById("blue").addEventListener("click",function(evt){
+            drawingColor="#0000ff";
+            document.getElementById(drawingColorId).style.border = "none";
+            drawingColorId = "blue";
+            document.getElementById(drawingColorId).style.border = "3px solid #000000";
+        },false);
+        
+        init();
+        
+    </script>
+</html>
