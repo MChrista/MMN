@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<title>Task 1</title>
+</head>
+<body>
+<h2>Shapes on Canvas</h2>
+<canvas id="c1" width="800" height="400" style="border:1px solid #000000;">
+ Browser does not support the canvas tag.
+</canvas>
+
+<script>
+var c = document.getElementById("c1");
+var ctx = c.getContext("2d");
+
+// star
+var star_offsetX = 160;
+var star_offsetY = 20;
+ctx.beginPath();
+ctx.moveTo(star_offsetX+107.8, star_offsetY+0.0);
+ctx.lineTo(star_offsetX+141.2, star_offsetY+67.5);
+ctx.lineTo(star_offsetX+215.7, star_offsetY+78.3);
+ctx.lineTo(star_offsetX+161.8, star_offsetY+130.9);
+ctx.lineTo(star_offsetX+174.5, star_offsetY+205.1);
+ctx.lineTo(star_offsetX+107.8, star_offsetY+170.1);
+ctx.lineTo(star_offsetX+41.2, star_offsetY+205.1);
+ctx.lineTo(star_offsetX+53.9, star_offsetY+130.9);
+ctx.lineTo(star_offsetX+0.0, star_offsetY+78.3);
+ctx.lineTo(star_offsetX+74.5, star_offsetY+67.5);
+ctx.lineTo(star_offsetX+107.8, star_offsetY+0.0);
+ctx.closePath();
+ctx.fillStyle = "#E1F50C";
+ctx.fill();
+
+// diamond
+var diamond_offsetX = 600;
+var diamond_offsetY = 20;
+ctx.beginPath();
+ctx.moveTo(diamond_offsetX+75,diamond_offsetY+0);
+ctx.lineTo(diamond_offsetX+150, diamond_offsetY+100);
+ctx.lineTo(diamond_offsetX+75, diamond_offsetY+200);
+ctx.lineTo(diamond_offsetX+0, diamond_offsetY+100);
+ctx.fillStyle = "#7BD3E0";
+ctx.closePath();
+ctx.fill();
+
+// heart
+var heart_offsetX = 180;
+var heart_offsetY = 80;
+ctx.beginPath();
+ctx.arc(heart_offsetX+250,heart_offsetY+150,50,0.8*Math.PI,0.2*Math.PI);
+ctx.arc(heart_offsetX+350,heart_offsetY+150,50,1*Math.PI,0.2*Math.PI);
+ctx.lineTo(heart_offsetX+300,heart_offsetY+300);
+//ctx.lineTo(190,150);
+ctx.fillStyle = "#FF0000";
+ctx.closePath();
+ctx.fill();
+
+// question mark
+var qm_offsetX = 0;
+var qm_offsetY = 0;
+ctx.beginPath();
+ctx.moveTo(50,250);
+ctx.bezierCurveTo(50,190,150,190,150,250);
+ctx.bezierCurveTo(150,300,100,300,100,350);
+ctx.fillStyle = "#000000";
+ctx.lineWidth = 20;
+//ctx.closePath();
+ctx.stroke();
+ctx.fillRect(90,362,20,20);
+
+</script>
+
+</body>
+</html> 

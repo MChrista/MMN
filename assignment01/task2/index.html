@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<title>Task 2</title>
+<style type="text/css">
+body {
+	font-family: Helvetica, sans-serif;
+}
+
+#draw-app {
+	width:900px;
+	height:500px;
+	padding:20px;
+	background:#ABDBE0;
+	border-radius:4px;
+}
+
+.color-icon {
+	float:left;
+	width:48px;
+	height:48px;
+	margin-right:8px;
+	border:2px solid #88BCC2;
+	border-radius:4px;
+}
+
+.color-icon.selected {
+	border:2px solid #fff;
+}
+
+#clear-button {
+	float:right;
+	text-align: center;
+	width:100px;
+	height:48px;
+	font-size:1.1em;
+	line-height:48px;
+	vertical-align:middle;
+	border:2px solid #88BCC2;
+	border-radius:4px;
+	color:#E6F6F7;
+	background:#88BCC2;
+	cursor:pointer;
+}
+
+#clear-button:hover{
+	background:#7BA2B5;
+} 
+
+#c1 {
+	position:relative;
+	width:100%;
+	height:400px;
+	background:#E6F6F7;
+	border-radius:4px;
+	cursor:pointer;
+}
+</style>
+</head>
+<body>
+<h2>Drawing App</h2>
+
+<div id="draw-app">
+
+<div id="clear-button" onclick="clearCanvas();">Clear</div>
+<div class="color-icon selected" style="background-color:#444;"></div>
+<div class="color-icon" style="background-color:#FF0000;"></div>
+<div class="color-icon" style="background-color:#E1F50C;"></div>
+<div class="color-icon" style="background-color:#0000FF;"></div>
+<div style="clear:both"></div>
+<br>
+
+<canvas id="c1" class="pen-size" width="800" height="400">
+ Browser does not support the canvas tag.
+</canvas>
+
+<script>
+var c = document.getElementById("c1");
+var ctx = c.getContext("2d");
+
+// first color is selected at start
+var colors = document.getElementsByClassName('color-icon');
+// first color is selected at start
+var selectedColor = colors[0].style.backgroundColor;
+var selectColor = function() {
+	selectedColor = this.style.backgroundColor;
+	document.getElementsByClassName('color-icon selected')[0].className = "color-icon";
+	this.className = "color-icon selected";
+};
+// register click listeners for all color
+for(var i=0;i<colors.length;i++){
+	colors[i].addEventListener('click', selectColor, false);
+}
+
+// only draw if mouse down
+var mouseDown = false;
+var lastX = 0;
+var lastY = 0;
+
+c.onmousedown = function(e){
+    mouseDown = true;
+}
+c.onmouseup = function(e){
+    mouseDown = false;
+}
+
+
+function draw(canvas, posX, posY) {
+	var ctx = canvas.getContext('2d');
+	ctx.fillStyle = selectedColor;
+	//ctx.fillRect(posX,posY,10,10);
+	ctx.beginPath();
+	ctx.arc(posX,posY,4, 0, 2 * Math.PI, false);
+	ctx.fill();
+	ctx.closePath();
+}
+
+function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
+        y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
+    };
+}
+
+c.addEventListener('mousemove', function(evt) {
+	var mousePos = getMousePos(c, evt);
+	//var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+	if(mouseDown) {
+		draw(c, mousePos.x, mousePos.y);
+	}
+}, false);
+
+function clearCanvas() {
+	ctx.clearRect(0, 0, c.width, c.height);
+}
+
+</script>
+
+</div>
+
+</body>
+</html> 
