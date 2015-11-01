@@ -1,0 +1,1 @@
+Statt POST wird GET verwendet. Dadurch sind die Parameter sichtbar. Auch die Authentifizierung mit "return true" ist so nicht praktikabel.
