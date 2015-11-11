@@ -13,6 +13,20 @@ class DatabaseHandler{
         $this->disconnect();
     }
     
+    function getPasswordOfUser($user){
+        $this->connect();
+        $result;
+        if($result = mysqli_query($this->connection, "select password from users where user='$user'")){
+            $row=mysqli_fetch_assoc($result);
+            $result = $row['password'];
+        }else{
+            $result="Error in getting user in database";
+        }
+        $this->disconnect();
+        return $result;
+    }
+    
+    
     function connect(){
         $user = "lmu";
         $password = "lmu_pw";
@@ -26,9 +40,6 @@ class DatabaseHandler{
     function disconnect(){
         mysqli_close($this->connection);
     }
-    
-    
-    
 }
 
 
