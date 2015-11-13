@@ -7,6 +7,7 @@ if(isset($_POST['user']) && isset($_POST['password'])){
     $password = $_POST['password'];   
     $userHandler = new UserHandler();
     $userHandler->registerNewUser($user, $password);
+    header("Location: login.php");
 }
 
 ?>

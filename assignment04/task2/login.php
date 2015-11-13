@@ -12,6 +12,7 @@ if(isset($_POST['user'])){
     $uh = new UserHandler();
     if($uh->loginUser($user, $password)){
         $_SESSION['loggedIn'] = true;
+        $_SESSION['userID'] = $uh->getIdofUser($user);
         header("Location: index.php");
     }else{
         echo "login failed";

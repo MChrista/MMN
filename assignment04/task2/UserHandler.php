@@ -19,6 +19,11 @@ class UserHandler {
         }
     }
     
+    function getIdOfUser($user){
+        $dbh = new DatabaseHandler();
+        return $dbh->getIdOfUser($user);
+    }
+    
     function logoutUser(){
         $_SESSION = array();
         session_destroy();

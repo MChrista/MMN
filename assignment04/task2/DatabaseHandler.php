@@ -13,6 +13,15 @@ class DatabaseHandler{
         $this->disconnect();
     }
     
+    function safeNewNote($userId,$text){
+        $this->connect();
+        if(!mysqli_query($this->connection, "Insert into notes (user_id, note) values('$userId','$text')")){
+            print_r(mysqli_error_list($this->connection));
+        }
+        mysqli_commit($this->connection);
+        $this->disconnect();
+    }
+    
     function getPasswordOfUser($user){
         $this->connect();
         $result;
@@ -26,6 +35,18 @@ class DatabaseHandler{
         return $result;
     }
     
+    function getIdOfUser($user){
+        $this->connect();
+        $result;
+        if($result = mysqli_query($this->connection, "select id from users where user='$user'")){
+            $row=mysqli_fetch_assoc($result);
+            $result = $row['id'];
+        }else{
+            $result="Error in getting user in database";
+        }
+        $this->disconnect();
+        return $result;
+    }
     
     function connect(){
         $user = "lmu";
