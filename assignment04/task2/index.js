@@ -1,13 +1,15 @@
 function handle_mousedown(e){
-    window.my_dragging = {};
-    my_dragging.pageX0 = e.pageX;
-    my_dragging.pageY0 = e.pageY;
-    my_dragging.elem = this;
-    my_dragging.offset0 = $(this).offset();
+    
+    var mouseDownPositionX = e.pageX;
+    var mouseDownPositionY = e.pageY;
+    var elementPosition = $(this).offset();
+    var element = this;
+    
     function handle_dragging(e){
-        var left = my_dragging.offset0.left + (e.pageX - my_dragging.pageX0);
-        var top = my_dragging.offset0.top + (e.pageY - my_dragging.pageY0);
-        $(my_dragging.elem)
+        
+        var left = elementPosition.left + (e.pageX - mouseDownPositionX);
+        var top = elementPosition.top + (e.pageY - mouseDownPositionY);
+        $(element)
         .offset({top: top, left: left});
     }
     function handle_mouseup(e){
