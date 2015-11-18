@@ -26,6 +26,9 @@ if(isset($_POST['addNote'])){
 ?>
 
 <htmL>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <link href="index.css" type="text/css" rel="stylesheet">
     <body>
         <form method="post">
             <button type="submit" name="logout">Logout</button>
@@ -36,8 +39,9 @@ if(isset($_POST['addNote'])){
             <button type="submit" name="addNote">Add</button>
         </form>
         
-        <table id="showNotesTable">
-        
-        </table>
+        <div class="noteDisplay">
+            <p>Meine erste Notiz</p>
+            <button>remove</button>
+        </div>
     </body>
 </htmL>

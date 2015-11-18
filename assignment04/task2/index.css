@@ -1,0 +1,13 @@
+body
+{
+    background-color: aqua;
+}
+
+.noteDisplay
+{
+    border: 5px solid #000000;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 200px;
+}
