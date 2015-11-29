@@ -1,0 +1,65 @@
+<html>
+    <script src="angular-1.4.8/angular.min.js"></script>
+    <h1>This is my first angular js try</h1>
+    
+    <!--<div ng-app="" ng-init="person={firstname:'michael',lastname:'christa'}">
+        <p>The name is <span ng-bind="person.firstname + ' ' + person.lastname"></span></p>
+    </div>-->
+    
+    <!--<div ng-app="" ng-init="quantity=5;cost=2">
+        <p>Quantity: <input type="number" ng-model="quantity"></input></p>
+        <p>Cost: <input type="number" ng-model="cost"></input></p>
+        <p>Price is {{ quantity * cost }}</p>
+    </div>-->
+    
+    <!--<div ng-app="" ng-init="persons=['theresa','michael','martin']">
+        <ul>
+            <li ng-repeat="x in persons">
+                {{x}}
+            </li>
+        </ul>
+    </div>-->
+    
+    <!--<div ng-app="myApp" ng-controller="myCtrl">
+        <p>Firstname <input type="text" ng-model="firstname"></input></p>
+        <p>Lastname <input type="text" ng-model="lastname"></input></p>
+        <p>Fullname {{fullname()}}</p>
+    
+    </div>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl', function($scope){
+            $scope.firstname="michael";
+            $scope.lastname="christa";
+            $scope.fullname = function(){
+                return $scope.firstname + ' ' + $scope.lastname;
+            }
+        });
+    
+    </script>-->
+    
+    
+    <!--<div ng-app="myApp" ng-controller="namesCtrl">
+        <p>Filter: <input type="text" ng-model="test"></input></p>
+        <ul>
+            <li ng-repeat="x in names | orderBy: 'age' | filter:test">
+                {{x.name | uppercase}}
+            </li>
+        </ul>
+    
+    </div>
+    <script>
+        angular.module("myApp",[]).controller("namesCtrl",function($scope){
+            $scope.names=[
+                {name: 'michael',age: '21'},
+                {name: 'theresa',age: '21'},
+                {name: 'martin',age: '27'},
+                {name: 'matthias',age: '20'}
+            ];
+        });    
+    </script>-->
+    
+    
+
+
+</html>
