@@ -27,6 +27,7 @@
         $.get('/shoot',{
             url : inputValue
         }, function(response){
+            console.log(response.path);
             resultDiv.empty();
             resultDiv.append($('<img>').attr('src',response.path));
         })
